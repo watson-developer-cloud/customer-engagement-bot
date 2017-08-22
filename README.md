@@ -1,4 +1,4 @@
-# Customer Engagement Tone Analyzer & Conversation sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/food-coach.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/food-coach)
+# Customer Engagement Tone Analyzer & Conversation sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
 
 This application demonstrates how the Watson Conversation service can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
@@ -6,8 +6,8 @@ This application demonstrates how the Watson Conversation service can be adapted
 
 Demo: http://ce-tone-demo.mybluemix.net/
 
-For more information on the Conversation service, see the [detailed documentation](http://www.ibm.com/watson/developercloud/doc/conversation/overview.shtml).
-For more information on the Tone Analyzer Service, see the [detailed documentation](http://www.ibm.com/watson/developercloud/tone-analyzer.html).
+For more information on the Conversation service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
+For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
 
 # Deploying the application
 
@@ -15,7 +15,7 @@ If you want to experiment with the application or use it as a basis for building
 
 ## Before you begin
 
-* You must have a Bluemix account, and your account must have available space for at least 1 application and 2 services. To register for a Bluemix account, go to https://console.ng.bluemix.net/registration/. Your Bluemix console shows your available space.
+* You must have a Bluemix account, and your account must have available space for at least 1 application and 2 services. To register for a Bluemix account, go to https://console.bluemix.net/registration/. Your Bluemix console shows your available space.
 
 * You must also have the following prerequisites installed:
   * the [Node.js](http://nodejs.org/) runtime (including the npm package manager)
@@ -25,7 +25,7 @@ If you want to experiment with the application or use it as a basis for building
 
 1. Download the food coach application code to your computer. You can do this in either of the following ways:
 
-   * [Download the .zip file](https://github.com/watson-developer-cloud/food-coach/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
+   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-care-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
 
    * Use GitHub to clone the repository locally
 
@@ -39,14 +39,14 @@ If you want to experiment with the application or use it as a basis for building
    cf create-service conversation <service_plan> <service_instance_name>
    ```
    Notes:
-      * <service_plan>: options include free, standard or premium.
+      * <service_plan>: options include `free`, `standard` or `premium`.
       * <service_instance_name>: this is a unique name of your choosing.
 
 
    For example:
 
    ```bash
-   cf create-service conversation standard conversation-ce-tone
+   cf create-service conversation free conversation-ce-tone
    ```
 
 1. Create a service key:
@@ -90,7 +90,7 @@ If you want to experiment with the application or use it as a basis for building
 
 ### Importing the Conversation workspace
 
-1. In your browser, navigate to your [Bluemix console](https://console.ng.bluemix.net).
+1. In your browser, navigate to your [Bluemix console](https://console.bluemix.net).
 
 1. From the **Dashboard** tab, click the newly created Conversation service in the **Services** list.  It'll have the name you gave it in the previous step (e.g., ```<service_instance_name>```).
 
@@ -135,11 +135,11 @@ If you want to experiment with the application or use it as a basis for building
 
    The output from this command is a JSON object, as in this example:
 
-   ```javascript
+   ```json
    {
      "password": "87iT7aqpvU7l",
      "url": "https://gateway.watsonplatform.net/conversation/api",
-     "username": "ca2905e6-7b5d-4408-9192-e4d54d83e604"
+     "username": "ca2905e6-7b5d-4408-9192-e4d54d13e604"
    }
    ```
 
@@ -223,7 +223,7 @@ If you want to subsequently deploy your local version of the application to the 
      - tone-analyzer-ce-tone
      env:
        NPM_CONFIG_PRODUCTION: false
-       WORKSPACE_ID: fdeab5e4-0ebe-4183-8d10-6e5557a6d842
+       WORKSPACE_ID: fdeab5e4-0ebe-4183-8d30-6e5557a6d842
     ```
 
 1. Save and close the `manifest.yml` file.
@@ -248,7 +248,7 @@ After you have the application deployed and running, you can explore the source 
 
    * Modify the .html file to change the appearance of the application page.
 
-   * Use the Conversation tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Conversation service documentation](http://www.ibm.com/watson/developercloud/doc/conversation/index.shtml).
+   * Use the Conversation tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Conversation service documentation](https://www.ibm.com/watson/services/conversation/).
 
 # What does the Customer Engagement Tone Analyzer & Conversation application do?
 
