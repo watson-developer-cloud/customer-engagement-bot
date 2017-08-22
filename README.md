@@ -1,4 +1,4 @@
-# Customer Engagement Tone Analyzer & Conversation sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
+# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
 
 This application demonstrates how the Watson Conversation service can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
