@@ -106,14 +106,14 @@ If you want to experiment with the application or use it as a basis for building
 
 1. Click **Import** to add the food coach workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
 
-   `<project_root>/ce-tone-conversation/training/ce-workspace.json`
+   `<project_root>/customer-engagement-bot/training/ce-workspace.json`
 
 1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The food coach workspace is created.
    * If you have any problems uploading the workspace using Chrome, please try another browser such as Firefox or Safari.
 
 ## Configuring the application environment
 
-1. At the command line, navigate to the local project directory (`<project_root>/ce-tone-conversation`).
+1. At the command line, navigate to the local project directory (`<project_root>/customer-engagement-bot`).
 
 1. Copy the `.env.example` file to a new `.env` file. Open this file in a text editor.
 
@@ -208,7 +208,7 @@ If you want to subsequently deploy your local version of the application to the 
    declared-services:
      conversation-ce-tone:
        label: conversation
-       plan: standard
+       plan: free
      tone-analyzer-ce-tone:
        label: tone_analyzer
        plan: standard
@@ -263,7 +263,6 @@ The chat interface is in the left panel of the UI, and the JSON response object 
     tradeIn: replace current laptop with another one
     thanks
     greeting
-    help: suggestions on what to say
 
 The dialog is also trained on two types of entities:
 
