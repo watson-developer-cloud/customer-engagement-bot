@@ -1,10 +1,10 @@
-# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
+# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot)
 
 This application demonstrates how the Watson Conversation service can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
 ![Demo GIF](readme_images/ce-demo.gif?raw=true)
 
-Demo: http://ce-tone-demo.mybluemix.net/
+Demo: http://customer-engagement-bot.mybluemix.net/
 
 For more information on the Conversation service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
 For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
@@ -25,7 +25,7 @@ If you want to experiment with the application or use it as a basis for building
 
 1. Download the food coach application code to your computer. You can do this in either of the following ways:
 
-   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-care-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
+   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-engagement-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
 
    * Use GitHub to clone the repository locally
 
@@ -201,7 +201,7 @@ If you want to subsequently deploy your local version of the application to the 
 
    * In the `env` section, add the `WORKSPACE_ID` environment variable, specifying the value from the `.env` file.
 
-   The following example shows a modified `manifest.yml` file:   
+   The following example shows a modified `manifest.yml` file:
 
    ```YAML
    ---
@@ -250,7 +250,7 @@ After you have the application deployed and running, you can explore the source 
 
    * Use the Conversation tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Conversation service documentation](https://www.ibm.com/watson/services/conversation/).
 
-# What does the Customer Engagement Tone Analyzer & Conversation application do?
+# What does the Customer Engagement Bot application do?
 
 The application interface is designed for chatting with a customer engagement bot. Based on a previous laptop purchase, the bot asks how the experience has been and responds accordingly if given a negative or positive response.
 
@@ -272,8 +272,6 @@ The dialog is also trained on two types of entities:
     weight
 
 These intents and entities help the bot understand variations your input.
-
-After asking you what you ate (if a meal was consumed), the bot asks you how you feel about it. Depending on your emotional tone, the bot provides different feedback.
 
 Below you can find some sample interactions:
 
@@ -317,5 +315,3 @@ If you encounter a problem, you can check the logs for more information. To see 
 
   Find more open source projects on the
   [IBM Github Page](http://ibm.github.io/).
-
-
