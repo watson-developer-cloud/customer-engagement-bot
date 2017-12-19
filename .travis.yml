@@ -7,3 +7,23 @@ node_js: stable
 script:
 - npm run lint
 - npm run codecov
+
+env:
+  global:
+  - BX_APP=customer-engagement-bot
+  - BX_API=https://api.ng.bluemix.net
+  - BX_ORGANIZATION=WatsonPlatformServices
+  - BX_SPACE=demos
+
+before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
+deploy:
+  skip_cleanup: true
+  provider: script
+  script:
+  - bx-blue-green-travis
+  on:
+    branch: master
+    repo: watson-developer-cloud/customer-engagement-bot
+notifications:
+  email: false
+
