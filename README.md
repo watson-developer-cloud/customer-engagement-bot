@@ -11,11 +11,11 @@ For more information on the Tone Analyzer Service, see the [detailed documentati
 
 # Deploying the application
 
-If you want to experiment with the application or use it as a basis for building your own application, you need to deploy it in your own environment. You can then explore the files, make changes, and see how those changes affect the running application. After making modifications, you can deploy your modified version of the application to the Bluemix cloud.
+If you want to experiment with the application or use it as a basis for building your own application, you need to deploy it in your own environment. You can then explore the files, make changes, and see how those changes affect the running application. After making modifications, you can deploy your modified version of the application to IBM Cloud.
 
 ## Before you begin
 
-* You must have a Bluemix account, and your account must have available space for at least 1 application and 2 services. To register for a Bluemix account, go to https://console.bluemix.net/registration/. Your Bluemix console shows your available space.
+* You must have a IBM Cloud account, and your account must have available space for at least 1 application and 2 services. To register for a IBM Cloud account, go to https://console.bluemix.net/registration/. Your IBM Cloud console shows your available space.
 
 * You must also have the following prerequisites installed:
   * the [Node.js](http://nodejs.org/) runtime (including the npm package manager)
@@ -31,7 +31,8 @@ If you want to experiment with the application or use it as a basis for building
 
 ## Setting up the Conversation service
 
-1. Make sure you have logged into your Bluemix account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
+1. Make sure you have logged into your 
+account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
 
 1. Create an instance of the Conversation service in the IBM cloud:
 
