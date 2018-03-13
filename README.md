@@ -1,12 +1,12 @@
 # Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
 
-This application demonstrates how the Watson Conversation service can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
+This application demonstrates how the Watson Assistant service (formerly Conversation) can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
 ![Demo GIF](readme_images/ce-demo.gif?raw=true)
 
 Demo: http://ce-tone-demo.mybluemix.net/
 
-For more information on the Conversation service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
+For more information on the Watson Assistant (Conversation) service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
 For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
 
 # Deploying the application
@@ -29,11 +29,15 @@ If you want to experiment with the application or use it as a basis for building
 
    * Use GitHub to clone the repository locally
 
-## Setting up the Conversation service
+## Setting up the 
+
+
+
+service
 
 1. Make sure you have logged into your Bluemix account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
 
-1. Create an instance of the Conversation service in the IBM cloud:
+1. Create an instance of the Watson Assistant (Conversation) service in the IBM cloud (our CLI is being updated, for now, use the `create-service conversation` command):
 
    ```bash
    cf create-service conversation <service_plan> <service_instance_name>
@@ -46,7 +50,7 @@ If you want to experiment with the application or use it as a basis for building
    For example:
 
    ```bash
-   cf create-service conversation free conversation-ce-tone
+   cf create-service conversation free watson-assistant-ce-tone
    ```
 
 1. Create a service key:
@@ -58,7 +62,7 @@ If you want to experiment with the application or use it as a basis for building
    For example:
 
    ```bash
-   cf create-service-key conversation-ce-tone conversation-ce-tone-key
+   cf create-service-key watson-assistant-ce-tone watson-assistant-ce-tone-key
    ```
 
 ## Setting up the Tone Analyzer service
@@ -88,11 +92,11 @@ If you want to experiment with the application or use it as a basis for building
    cf create-service-key tone-analyzer-ce-tone tone-analyzer-ce-tone-key
    ```
 
-### Importing the Conversation workspace
+### Importing the Watson Assistant (formerly Conversation) workspace
 
 1. In your browser, navigate to your [Bluemix console](https://console.bluemix.net).
 
-1. From the **Dashboard** tab, click the newly created Conversation service in the **Services** list.  It'll have the name you gave it in the previous step (e.g., ```<service_instance_name>```).
+1. From the **Dashboard** tab, click the newly created Watson Assistant (Conversation) service in the **Services** list.  It'll have the name you gave it in the previous step (e.g., ```<service_instance_name>```).
 
    ![Screen capture of Services list](readme_images/conversation_ce_service.png)
 
@@ -102,7 +106,7 @@ If you want to experiment with the application or use it as a basis for building
 
    ![Screen capture of Launch tool button](readme_images/launch_tool_button.png)
 
-   The Conversation service tool opens.
+   The Watson Assistant (Conversation) service tool opens.
 
 1. Click **Import** to add the food coach workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
 
@@ -130,7 +134,7 @@ If you want to experiment with the application or use it as a basis for building
    For example:
 
    ```bash
-   cf service-key conversation-ce-tone conversation-ce-tone-key
+   cf service-key watson-assistant-ce-tone watson-assistant-ce-tone-key
    ```
 
    The output from this command is a JSON object, as in this example:
@@ -143,11 +147,11 @@ If you want to experiment with the application or use it as a basis for building
    }
    ```
 
-1. In the JSON output, find the values for the `password` and `username` keys. Paste these values (not including the quotation marks) into the `CONVERSATION_PASSWORD` and `CONVERSATION_USERNAME` variables in the `.env` file:
+1. In the JSON output, find the values for the `password` and `username` keys. Paste these values (not including the quotation marks) into the `WATSON_ASSISTANT_PASSWORD` and `WATSON_ASSISTANT_USERNAME` variables in the `.env` file:
 
    ```
-   CONVERSATION_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
-   CONVERSATION_PASSWORD=87iT7aqpvU7l
+   WATSON_ASSISTANT_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
+   WATSON_ASSISTANT_PASSWORD=87iT7aqpvU7l
    ```
 Do the same for the Tone Analyzer service, and paste the values into the `TONE_ANALYZER_PASSWORD` and `TONE_ANALYZER_USERNAME` variables in the `.env` file
    ```
@@ -157,7 +161,7 @@ Do the same for the Tone Analyzer service, and paste the values into the `TONE_A
 
    Leave the `.env` file open in your text editor.
 
-1. In your Bluemix console, open the Conversation service instance where you imported the workspace.
+1. In your Bluemix console, open the Watson Assistant service instance where you imported the workspace.
 
 1. Click the menu icon in the upper right corner of the workspace tile, and then select **View details**.
 
@@ -197,7 +201,7 @@ If you want to subsequently deploy your local version of the application to the 
 
    * In the `applications` section of the `manifest.yml` file, change the `name` value to a unique name for your version of the demo application.
 
-   * In the `services` section, specify the name of the Conversation service instance you created for the demo application. If you do not remember the service name, use the `cf services` command to list all services you have created.
+   * In the `services` section, specify the name of the Watson Assistant service instance you created for the demo application. If you do not remember the service name, use the `cf services` command to list all services you have created.
 
    * In the `env` section, add the `WORKSPACE_ID` environment variable, specifying the value from the `.env` file.
 
@@ -206,20 +210,20 @@ If you want to subsequently deploy your local version of the application to the 
    ```YAML
    ---
    declared-services:
-     conversation-ce-tone:
+     watson-assistant-ce-tone:
        label: conversation
        plan: standard
      tone-analyzer-ce-tone:
        label: tone_analyzer
        plan: standard
    applications:
-   - name: conversation-ce-tone
+   - name: watson-assistant-ce-tone
      command: npm start
      path: .
      memory: 256M
      instances: 1
      services:
-     - conversation-ce-tone
+     - watson-assistant-ce-tone
      - tone-analyzer-ce-tone
      env:
        NPM_CONFIG_PRODUCTION: false
@@ -248,13 +252,13 @@ After you have the application deployed and running, you can explore the source 
 
    * Modify the .html file to change the appearance of the application page.
 
-   * Use the Conversation tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Conversation service documentation](https://www.ibm.com/watson/services/conversation/).
+   * Use the Watson Assistant tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Watson Assistant service documentation](https://www.ibm.com/watson/services/conversation/).
 
-# What does the Customer Engagement Tone Analyzer & Conversation application do?
+# What does the Customer Engagement Tone Analyzer & Watson Assistant application do?
 
 The application interface is designed for chatting with a customer engagement bot. Based on a previous laptop purchase, the bot asks how the experience has been and responds accordingly if given a negative or positive response.
 
-The chat interface is in the left panel of the UI, and the JSON response object returned by the Conversation service in the right panel. Your input is run against a small set of sample data trained with the following intents:
+The chat interface is in the left panel of the UI, and the JSON response object returned by the Watson Assistant service in the right panel. Your input is run against a small set of sample data trained with the following intents:
 
     yes
     no
@@ -279,13 +283,13 @@ Below you can find some sample interactions:
 
 ![Alt text](readme_images/examples.jpg?raw=true)
 
-In order to integrate the Tone Analyzer with the Conversation service, the following approach was taken:
-   * Intercept the user's message. Before sending it to the Conversation service, invoke the Tone Analyzer Service. See the call to `toneDetection.invokeToneAsync` in the `invokeToneConversation` function in [app.js](./app.js).
-   * Parse the JSON response object from the Tone Analyzer Service, and add appropriate variables to the context object of the JSON payload to be sent to the Conversation service. See the `updateUserTone` function in [tone_detection.js](./addons/tone_detection.js).
-   * Send the user input, along with the updated context object in the payload to the Conversation service. See the call to `conversation.message` in the `invokeToneConversation` function in [app.js](./app.js).
+In order to integrate the Tone Analyzer with the Watson Assistant service (formerly Conversation), the following approach was taken:
+   * Intercept the user's message. Before sending it to the Watson Assistant service, invoke the Tone Analyzer Service. See the call to `toneDetection.invokeToneAsync` in the `invokeToneConversation` function in [app.js](./app.js).
+   * Parse the JSON response object from the Tone Analyzer Service, and add appropriate variables to the context object of the JSON payload to be sent to the Watson Assistant service. See the `updateUserTone` function in [tone_detection.js](./addons/tone_detection.js).
+   * Send the user input, along with the updated context object in the payload to the Watson Assistant service. See the call to `conversation.message` in the `invokeToneConversation` function in [app.js](./app.js).
 
 
-You can see the JSON response object from the Conversation service in the right hand panel.
+You can see the JSON response object from the Watson Assistant service in the right hand panel.
 
 ![Alt text](readme_images/tone_context.jpg?raw=true)
 
