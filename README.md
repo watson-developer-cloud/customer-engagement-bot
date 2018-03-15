@@ -29,7 +29,7 @@ If you want to experiment with the application or use it as a basis for building
 
    * Use GitHub to clone the repository locally
 
-## Setting up the service
+## Setting up the Watson Assistant (formerly Conversation) service
 
 1. Make sure you have logged into your Bluemix account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
 
@@ -88,7 +88,7 @@ If you want to experiment with the application or use it as a basis for building
    cf create-service-key tone-analyzer-ce-tone tone-analyzer-ce-tone-key
    ```
 
-### Importing the Watson Assistant (formerly Conversation) workspace
+### Importing the Watson Assistant workspace
 
 1. In your browser, navigate to your [Bluemix console](https://console.bluemix.net).
 
