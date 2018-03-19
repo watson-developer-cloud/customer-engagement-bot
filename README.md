@@ -146,8 +146,8 @@ If you want to experiment with the application or use it as a basis for building
 1. In the JSON output, find the values for the `password` and `username` keys. Paste these values (not including the quotation marks) into the `WATSON_ASSISTANT_PASSWORD` and `WATSON_ASSISTANT_USERNAME` variables in the `.env` file:
 
    ```
-   WATSON_ASSISTANT_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
-   WATSON_ASSISTANT_PASSWORD=87iT7aqpvU7l
+   ASSISTANT_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
+   ASSISTANT_PASSWORD=87iT7aqpvU7l
    ```
 Do the same for the Tone Analyzer service, and paste the values into the `TONE_ANALYZER_PASSWORD` and `TONE_ANALYZER_USERNAME` variables in the `.env` file
    ```
