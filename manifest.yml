@@ -1,19 +1,19 @@
 ---
 declared-services:
-  watson-assistant-prod:
+  watson-assistant-ce-tone:
     label: conversation
     plan: standard
-  tone-analyzer-standard:
+  tone-analyzer-ce-tone:
     label: tone_analyzer
     plan: standard
 applications:
-- name: ce-tone-demo
+- name: watson-assistant-ce-tone
   command: npm start
   path: .
   instances: 1
   services:
-  - watson-assistant-prod
-  - Tone Analyzer-0b
+  - watson-assistant-ce-tone
+  - tone-analyzer-ce-tone
   memory: 256MB
   env:
     NPM_CONFIG_PRODUCTION: false
