@@ -1,21 +1,21 @@
-# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-care-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-care-bot)
+# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot)
 
 This application demonstrates how the Watson Assistant service (formerly Conversation) can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
 ![Demo GIF](readme_images/ce-demo.gif?raw=true)
 
-Demo: http://ce-tone-demo.mybluemix.net/
+Demo: http://customer-engagement-bot.mybluemix.net/
 
 For more information on the Watson Assistant (Conversation) service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
 For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
 
 # Deploying the application
 
-If you want to experiment with the application or use it as a basis for building your own application, you need to deploy it in your own environment. You can then explore the files, make changes, and see how those changes affect the running application. After making modifications, you can deploy your modified version of the application to the Bluemix cloud.
+If you want to experiment with the application or use it as a basis for building your own application, you need to deploy it in your own environment. You can then explore the files, make changes, and see how those changes affect the running application. After making modifications, you can deploy your modified version of the application to IBM Cloud.
 
 ## Before you begin
 
-* You must have a Bluemix account, and your account must have available space for at least 1 application and 2 services. To register for a Bluemix account, go to https://console.bluemix.net/registration/. Your Bluemix console shows your available space.
+* You must have a IBM Cloud account, and your account must have available space for at least 1 application and 2 services. To register for a IBM Cloud account, go to https://console.bluemix.net/registration/. Your IBM Cloud console shows your available space.
 
 * You must also have the following prerequisites installed:
   * the [Node.js](http://nodejs.org/) runtime (including the npm package manager)
@@ -25,13 +25,14 @@ If you want to experiment with the application or use it as a basis for building
 
 1. Download the food coach application code to your computer. You can do this in either of the following ways:
 
-   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-care-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
+   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-engagement-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
 
    * Use GitHub to clone the repository locally
 
 ## Setting up the Watson Assistant (formerly Conversation) service
 
-1. Make sure you have logged into your Bluemix account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
+1. Make sure you have logged into your 
+account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
 
 1. Create an instance of the Watson Assistant (Conversation) service in the IBM cloud (our CLI is being updated, for now, use the `create-service conversation` command):
 
@@ -106,14 +107,14 @@ If you want to experiment with the application or use it as a basis for building
 
 1. Click **Import** to add the food coach workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
 
-   `<project_root>/ce-tone-conversation/training/ce-workspace.json`
+   `<project_root>/customer-engagement-bot/training/ce-workspace.json`
 
 1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The food coach workspace is created.
    * If you have any problems uploading the workspace using Chrome, please try another browser such as Firefox or Safari.
 
 ## Configuring the application environment
 
-1. At the command line, navigate to the local project directory (`<project_root>/ce-tone-conversation`).
+1. At the command line, navigate to the local project directory (`<project_root>/customer-engagement-bot`).
 
 1. Copy the `.env.example` file to a new `.env` file. Open this file in a text editor.
 
@@ -201,14 +202,14 @@ If you want to subsequently deploy your local version of the application to the 
 
    * In the `env` section, add the `WORKSPACE_ID` environment variable, specifying the value from the `.env` file.
 
-   The following example shows a modified `manifest.yml` file:   
+   The following example shows a modified `manifest.yml` file:
 
    ```YAML
    ---
    declared-services:
      watson-assistant-ce-tone:
        label: conversation
-       plan: standard
+       plan: free
      tone-analyzer-ce-tone:
        label: tone_analyzer
        plan: standard
@@ -263,7 +264,6 @@ The chat interface is in the left panel of the UI, and the JSON response object 
     tradeIn: replace current laptop with another one
     thanks
     greeting
-    help: suggestions on what to say
 
 The dialog is also trained on two types of entities:
 
@@ -272,8 +272,6 @@ The dialog is also trained on two types of entities:
     weight
 
 These intents and entities help the bot understand variations your input.
-
-After asking you what you ate (if a meal was consumed), the bot asks you how you feel about it. Depending on your emotional tone, the bot provides different feedback.
 
 Below you can find some sample interactions:
 
@@ -317,5 +315,3 @@ If you encounter a problem, you can check the logs for more information. To see 
 
   Find more open source projects on the
   [IBM Github Page](http://ibm.github.io/).
-
-
