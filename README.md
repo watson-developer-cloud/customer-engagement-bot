@@ -251,7 +251,7 @@ After you have the application deployed and running, you can explore the source 
 
    * Use the Watson Assistant tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Watson Assistant service documentation](https://www.ibm.com/watson/services/conversation/).
 
-# What does the Customer Engagement Tone Analyzer & Watson Assistant application do?
+# What does the Customer Engagement Bot application do?
 
 The application interface is designed for chatting with a customer engagement bot. Based on a previous laptop purchase, the bot asks how the experience has been and responds accordingly if given a negative or positive response.
 
