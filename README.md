@@ -23,7 +23,7 @@ If you want to experiment with the application or use it as a basis for building
 
 ## Getting the files
 
-1. Download the food coach application code to your computer. You can do this in either of the following ways:
+1. Download the customer engagement bot application code to your computer. You can do this in either of the following ways:
 
    * [Download the .zip file](https://github.com/watson-developer-cloud/customer-engagement-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
 
@@ -31,7 +31,7 @@ If you want to experiment with the application or use it as a basis for building
 
 ## Setting up the Watson Assistant (formerly Conversation) service
 
-1. Make sure you have logged into your 
+1. Make sure you have logged into your
 account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
 
 1. Create an instance of the Watson Assistant (Conversation) service in the IBM cloud (our CLI is being updated, for now, use the `create-service conversation` command):
@@ -105,11 +105,11 @@ account using Cloud Foundry. For more information, see [the Watson Developer Clo
 
    The Watson Assistant (Conversation) service tool opens.
 
-1. Click **Import** to add the food coach workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
+1. Click **Import** to add the customer engagement workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
 
    `<project_root>/customer-engagement-bot/training/ce-workspace.json`
 
-1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The food coach workspace is created.
+1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The customer engagement workspace is created.
    * If you have any problems uploading the workspace using Chrome, please try another browser such as Firefox or Safari.
 
 ## Configuring the application environment
