@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test-unit": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit",
+    "test-unit": "mocha ./test/unit --exit",
     "test-casper": "casperjs test ./test/test.webui.js",
     "test-casper-runner": "NODE_ENV=test node casper-runner.js",
     "test": "npm run lint && npm run test-unit && npm run test-casper-runner",
@@ -22,48 +22,27 @@
     "cloudant": "^1.10.0-NOTICE",
     "dotenv": "^5.0.1",
     "express": "^4.13.4",
-    "express-csv": "^0.6.0",
-    "extend": "^3.0.0",
-    "json-query": "^2.1.0",
     "nano": "^6.2.0",
-    "twitter-node-client": "^0.0.6",
     "uuid": "^3.2.1",
     "vcap_services": "^0.3.4",
     "watson-developer-cloud": "^3.4.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.14.0",
     "casperjs": "^1.1.1",
     "eslint": "^4.19.1",
-    "graceful-fs": "^4.1.6",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-concat": "^2.6.0",
-    "gulp-iconfont": "^1.0.0",
-    "gulp-iconfont-css": "0.0.9",
-    "gulp-nodemon": "^2.0.2",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.2.0",
-    "gulp-uglify": "^2.0.0",
-    "istanbul": "^0.4.3",
     "mocha": "^5.1.1",
     "phantomjs-prebuilt": "^2.1.12",
-    "run-sequence": "^1.2.2",
-    "supertest": "^3.1.0",
-    "wrench": "^1.5.9"
+    "supertest": "^3.1.0"
   },
   "engine": {
-    "node": ">= 4.2.4"
+    "node": ">= 8.4.2"
   },
   "directories": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/watson-developer-cloud/food-coach.git"
+    "url": "git+https://github.com/watson-developer-cloud/customer-engagement-bot.git"
   },
   "contributors": [
     {
