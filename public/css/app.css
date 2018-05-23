@@ -48,7 +48,7 @@ div {
 }
 
 #contentParent {
-  height: 92%;
+  height: 100%;
 }
 
 .responsive-columns-wrapper {
@@ -72,7 +72,7 @@ div {
 }
 
 .chat-column {
-  height: 85%;
+  height: 74%;
   padding: 0.9375rem 0 0.625rem 0;
   margin: auto;
   text-align: left;
@@ -432,4 +432,8 @@ html{
   url('../fonts/ibm-glyphs.svg?1b8643#ibm-glyph') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+.message-disclaimer {
+  margin-bottom: 0;
 }
