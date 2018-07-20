@@ -1,6 +1,6 @@
 {
-  "name": "ce-tone-demo",
-  "description": "A simple Node.js based web app which shows how to use the Conversation API to recognize user intents.",
+  "name": "@ibm-watson/customer-engagement-bot",
+  "description": "A simple Node.js based web app which shows how to use the Assistant API to recognize user intents.",
   "version": "0.2.1",
   "main": "server.js",
   "scripts": {
@@ -17,21 +17,21 @@
   "license": "Apache-2.0",
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
-    "bluebird": "^3.4.1",
-    "body-parser": "^1.15.1",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
     "cloudant": "^1.10.0-NOTICE",
-    "dotenv": "^5.0.1",
-    "express": "^4.13.4",
-    "nano": "^6.2.0",
-    "uuid": "^3.2.1",
-    "vcap_services": "^0.3.4",
-    "watson-developer-cloud": "^3.4.1"
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "nano": "^6.4.4",
+    "uuid": "^3.3.2",
+    "vcap_services": "^0.4.0",
+    "watson-developer-cloud": "^3.7.0"
   },
   "devDependencies": {
-    "casperjs": "^1.1.1",
-    "eslint": "^4.19.1",
-    "mocha": "^5.1.1",
-    "phantomjs-prebuilt": "^2.1.12",
+    "casperjs": "^1.1.4",
+    "eslint": "^5.2.0",
+    "mocha": "^5.2.0",
+    "phantomjs-prebuilt": "^2.1.16",
     "supertest": "^3.1.0"
   },
   "engine": {
@@ -53,5 +53,9 @@
       "name": "April Webster",
       "email": "awebster@us.ibm.com"
     }
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
