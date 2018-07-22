@@ -44,7 +44,7 @@ function invokeToneAsync(conversationPayload, toneAnalyzer) {
   if (!conversationPayload.input || !conversationPayload.input.text || conversationPayload.input.text.trim() == '')
     conversationPayload.input.text = '<empty>';
   return new Promise(function(resolve, reject) {
-    toneAnalyzer.tone_chat({
+    toneAnalyzer.toneChat({
       utterances: [
         { text: conversationPayload.input.text, user: 'customer'}
       ]}, (error, data) => {
@@ -109,11 +109,6 @@ function initUser() {
       'emotion': {
         'current': null
       },
-      //'language': {
-      //  'current': null
-      //},
-      //'social': {
-      //  'current': null
     }
   };
 }

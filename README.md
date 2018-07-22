@@ -1,6 +1,15 @@
-# Customer Engagement sample application [![Build Status](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/customer-engagement-bot)
+<h1 align="center" style="border-bottom: none;">🚀 Customer Engagement Bot</h1>
+<h3 align="center">This application demonstrates how the Watson Assistant service (formerly Conversation) can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.</h3>
+<p align="center">
+  <a href="http://travis-ci.org/watson-developer-cloud/customer-engagement-bot">
+    <img alt="Travis" src="https://travis-ci.org/watson-developer-cloud/customer-engagement-bot.svg?branch=master">
+  </a>
+  <a href="#badge">
+    <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+  </a>
+</p>
+</p>
 
-This application demonstrates how the Watson Assistant service (formerly Conversation) can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.
 
 ![Demo GIF](readme_images/ce-demo.gif?raw=true)
 
@@ -9,233 +18,129 @@ Demo: http://customer-engagement-bot.mybluemix.net/
 For more information on the Watson Assistant (Conversation) service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
 For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
 
-# Deploying the application
+## Deploying the application
 
 If you want to experiment with the application or use it as a basis for building your own application, you need to deploy it in your own environment. You can then explore the files, make changes, and see how those changes affect the running application. After making modifications, you can deploy your modified version of the application to IBM Cloud.
 
-## Before you begin
+## Prerequisites
 
-* You must have a IBM Cloud account, and your account must have available space for at least 1 application and 2 services. To register for a IBM Cloud account, go to https://console.bluemix.net/registration/. Your IBM Cloud console shows your available space.
+1. Sign up for an [IBM Cloud account](https://console.bluemix.net/registration/).
+1. Download the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview).
+1. Create an instance of the Watson Assistant service and get your credentials:
+    - Go to the [Watson Assistant](https://console.bluemix.net/catalog/services/conversation) page in the IBM Cloud Catalog.
+    - Log in to your IBM Cloud account.
+    - Click **Create**.
+    - Click **Show** to view the service credentials.
+    - Copy the `apikey` value, or copy the `username` and `password` values if your service instance doesn't provide an `apikey`.
+    - Copy the `url` value.
+1. Create an instance of the Tone Analyzer service and get your credentials:
+    - Go to the [Tone Analyzer](https://console.bluemix.net/catalog/services/tone-analyzer) page in the IBM Cloud Catalog.
+    - Log in to your IBM Cloud account.
+    - Click **Create**.
+    - Click **Show** to view the service credentials.
+    - Copy the `apikey` value, or copy the `username` and `password` values if your service instance doesn't provide an `apikey`.
+    - Copy the `url` value.
 
-* You must also have the following prerequisites installed:
-  * the [Node.js](http://nodejs.org/) runtime (including the npm package manager)
-  * the [Cloud Foundry command-line client](https://github.com/cloudfoundry/cli#downloads)
+## Configuring the application
 
-## Getting the files
+1. In your IBM Cloud console, open the Watson Assistant service instance
 
-1. Download the customer engagement bot application code to your computer. You can do this in either of the following ways:
+2. Click the **Import workspace** icon in the Watson Assistant service tool. Specify the location of the workspace JSON file in your local copy of the app project:
 
-   * [Download the .zip file](https://github.com/watson-developer-cloud/customer-engagement-bot/archive/master.zip) of the GitHub repository and extract the files to a local directory, OR
+    `<project_root>/customer-engagement-bot/training/ce-workspace.json`
 
-   * Use GitHub to clone the repository locally
+3. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The car dashboard workspace is created.
 
-## Setting up the Watson Assistant (formerly Conversation) service
+4. Click the menu icon in the upper-right corner of the workspace tile, and then select **View details**.
 
-1. Make sure you have logged into your
-account using Cloud Foundry. For more information, see [the Watson Developer Cloud documentation](https://www.ibm.com/watson/developercloud/doc/common/getting-started-cf.html).
+5. Click the ![Copy](readme_images/copy.png) icon to copy the workspace ID to the clipboard.
 
-1. Create an instance of the Watson Assistant (Conversation) service in the IBM cloud (our CLI is being updated, for now, use the `create-service conversation` command):
+    ![Steps to get credentials](https://github.com/watson-developer-cloud/assistant-simple/raw/master/readme_images/assistant-simple.gif)
 
-   ```bash
-   cf create-service conversation <service_plan> <service_instance_name>
-   ```
-   Notes:
-      * <service_plan>: options include `free`, `standard` or `premium`.
-      * <service_instance_name>: this is a unique name of your choosing.
+6. In the application folder, copy the *.env.example* file and create a file called *.env*
+
+    ```
+    cp .env.example .env
+    ```
+
+7. Open the *.env* file and add the service credentials that you obtained in the previous step.
+
+    Example *.env* file that configures the `apikey` and `url` for a Watson Assistant service instance hosted in the US East region:
+
+    ```
+    ASSISTANT_IAM_APIKEY=X4rbi8vwZmKpXfowaS3GAsA7vdy17Qh7km5D6EzKLHL2
+    ASSISTANT_URL=https://gateway-wdc.watsonplatform.net/assistant/api
+    ```
+
+    If your service instance uses `username` and `password` credentials, add the `ASSISTANT_USERNAME` and `ASSISTANT_PASSWORD` variables to the *.env* file.
+
+    Example *.env* file that configures the `username`, `password`, and `url` for a Watson Assistant service instance hosted in the US South region:
+
+    ```
+    ASSISTANT_USERNAME=522be-7b41-ab44-dec3-g1eab2ha73c6
+    ASSISTANT_PASSWORD=A4Z5BdGENrwu8
+    ASSISTANT_URL=https://gateway.watsonplatform.net/assistant/api
+    ```
+
+8. Add the `WORKSPACE_ID` to the previous properties
+
+    ```
+    WORKSPACE_ID=522be-7b41-ab44-dec3-g1eab2ha73c6
+    ```
 
 
-   For example:
+9. Your `.env` file  should looks like:
 
-   ```bash
-   cf create-service conversation free watson-assistant-ce-tone
-   ```
+    ```
+    # Environment variables
+    WORKSPACE_ID=1c464fa0-2b2f-4464-b2fb-af0ffebc3aab
+    ASSISTANT_IAM_APIKEY=_5iLGHasd86t9NddddrbJPOFDdxrixnOJYvAATKi1
+    ASSISTANT_URL=https://gateway-syd.watsonplatform.net/assistant/api
 
-1. Create a service key:
+    TONE_ANALYZER_IAM_APIKEY=UdHqOFLzoOCFD2M50AbsasdYhOnLV6sd_C3ua5zah
+    TONE_ANALYZER_URL=https://gateway-syd.watsonplatform.net/tone-analyzer/api
+    ```
 
-   ```bash
-   cf create-service-key <service_instance> <service_key>
-   ```
+## Running locally
 
-   For example:
+1. Install the dependencies
 
-   ```bash
-   cf create-service-key watson-assistant-ce-tone watson-assistant-ce-tone-key
-   ```
+    ```
+    npm install
+    ```
 
-## Setting up the Tone Analyzer service
+1. Run the application
 
-1. Create an instance of the Tone Analyzer service in the IBM cloud:
-
-   ```bash
-   cf create-service tone_analyzer <service_plan> <service_instance_name>
-   ```
-   ```<service_plan>``` options include standard and premium.  Please note that either of these options will incur a cost.
-
-   For example:
-
-   ```bash
-   cf create-service tone_analyzer standard tone-analyzer-ce-tone
-   ```
-
-1. Create a service key:
-
-   ```bash
-   cf create-service-key <service_instance> <service_key>
-   ```
-
-   For example:
-
-   ```bash
-   cf create-service-key tone-analyzer-ce-tone tone-analyzer-ce-tone-key
-   ```
-
-### Importing the Watson Assistant workspace
-
-1. In your browser, navigate to your [Bluemix console](https://console.bluemix.net).
-
-1. From the **Dashboard** tab, click the newly created Watson Assistant (Conversation) service in the **Services** list.  It'll have the name you gave it in the previous step (e.g., ```<service_instance_name>```).
-
-   ![Screen capture of Services list](readme_images/conversation_ce_service.png)
-
-   The Service Details page opens.
-
-1. Click the **Launch tool** button.
-
-   ![Screen capture of Launch tool button](readme_images/launch_tool_button.png)
-
-   The Watson Assistant (Conversation) service tool opens.
-
-1. Click **Import** to add the customer engagement workspace. When prompted, specify the location of the workspace JSON file in your local copy of the application project:
-
-   `<project_root>/customer-engagement-bot/training/ce-workspace.json`
-
-1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The customer engagement workspace is created.
-   * If you have any problems uploading the workspace using Chrome, please try another browser such as Firefox or Safari.
-
-## Configuring the application environment
-
-1. At the command line, navigate to the local project directory (`<project_root>/customer-engagement-bot`).
-
-1. Copy the `.env.example` file to a new `.env` file. Open this file in a text editor.
-
-```bash
-   cp .env.example .env
-   ```
-
-1. Retrieve the credentials from the service key:
-
-   ```bash
-   cf service-key <service_instance_name> <service_key>
-   ```
-
-   For example:
-
-   ```bash
-   cf service-key watson-assistant-ce-tone watson-assistant-ce-tone-key
-   ```
-
-   The output from this command is a JSON object, as in this example:
-
-   ```json
-   {
-     "password": "87iT7aqpvU7l",
-     "url": "https://gateway.watsonplatform.net/conversation/api",
-     "username": "ca2905e6-7b5d-4408-9192-e4d54d13e604"
-   }
-   ```
-
-1. In the JSON output, find the values for the `password` and `username` keys. Paste these values (not including the quotation marks) into the `WATSON_ASSISTANT_PASSWORD` and `WATSON_ASSISTANT_USERNAME` variables in the `.env` file:
-
-   ```
-   ASSISTANT_USERNAME=ca2905e6-7b5d-4408-9192-e4d54d83e604
-   ASSISTANT_PASSWORD=87iT7aqpvU7l
-   ```
-Do the same for the Tone Analyzer service, and paste the values into the `TONE_ANALYZER_PASSWORD` and `TONE_ANALYZER_USERNAME` variables in the `.env` file
-   ```
-   TONE_ANALYZER_USERNAME=mhl715fg-y6h5-2113-6540-ytr78nhs8u64
-   TONE_ANALYZER_PASSWORD=124GHaq31M9l
-   ```
-
-   Leave the `.env` file open in your text editor.
-
-1. In your Bluemix console, open the Watson Assistant service instance where you imported the workspace.
-
-1. Click the menu icon in the upper right corner of the workspace tile, and then select **View details**.
-
-   ![Screen capture of workspace tile menu](readme_images/conversation_ce_workspace_details.png)
-
-   The tile shows the workspace details.
-
-1. Click the ![Copy](readme_images/copy_icon.png) icon next to the workspace ID to copy the workspace ID to the clipboard.
-
-1. Back on your local system, paste the workspace ID into the WORKSPACE_ID variable in the `.env` file you previously created. At this point, your `.env` file should look like the following:
-
-   ![Screen capture of env file](readme_images/env_file_example.png)
-
-Save and close the file.
-
-1. Install the demo application package into the local Node.js runtime environment:
-
-   ```bash
-   npm install
-   ```
-
-1. Start the application:
-
-    ```bash
+    ```
     npm start
     ```
 
-The application is now deployed and running on the local system. Go to `http://localhost:3000` in your browser to try it out.
+1. View the application in a browser at `localhost:3000`
 
-## Optional: Deploying from the local system to Bluemix
+## Deploying to IBM Cloud as a Cloud Foundry Application
 
-If you want to subsequently deploy your local version of the application to the Bluemix cloud, you can use Cloud Foundry.
+1. Login to IBM Cloud with the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview)
 
-1. In the project root directory, open the `manifest.yml` file in a text editor.
-
-1. Specify the following values in the file:
-
-   * In the `applications` section of the `manifest.yml` file, change the `name` value to a unique name for your version of the demo application.
-
-   * In the `services` section, specify the name of the Watson Assistant service instance you created for the demo application. If you do not remember the service name, use the `cf services` command to list all services you have created.
-
-   * In the `env` section, add the `WORKSPACE_ID` environment variable, specifying the value from the `.env` file.
-
-   The following example shows a modified `manifest.yml` file:
-
-   ```YAML
-   ---
-   declared-services:
-     watson-assistant-ce-tone:
-       label: conversation
-       plan: free
-     tone-analyzer-ce-tone:
-       label: tone_analyzer
-       plan: standard
-   applications:
-   - name: watson-assistant-ce-tone
-     command: npm start
-     path: .
-     memory: 256M
-     instances: 1
-     services:
-     - watson-assistant-ce-tone
-     - tone-analyzer-ce-tone
-     env:
-       NPM_CONFIG_PRODUCTION: false
-       WORKSPACE_ID: fdeab5e4-0ebe-4183-8d30-6e5557a6d842
+    ```
+    ibmcloud login
     ```
 
-1. Save and close the `manifest.yml` file.
+1. Target a Cloud Foundry organization and space.
 
-1. Push the application to Bluemix:
+    ```
+    ibmcloud target --cf
+    ```
 
-   ```bash
-   cf push
-   ```
+1. Edit the *manifest.yml* file. Change the **name** field to something unique.  
+  For example, `- name: my-app-name`.
+1. Deploy the application
 
-When the command finishes processing, your application is deployed and running on Bluemix. You can access it using the URL specified in the command output.
+    ```
+    ibmcloud app push
+    ```
+
+1. View the application online at the app URL.  
+For example: https://my-app-name.mybluemix.net
 
 # What to do next
 
@@ -245,9 +150,9 @@ After you have the application installed and running, experiment with it to see 
 
 After you have the application deployed and running, you can explore the source files and make changes. Try the following:
 
-   * Modify the .js files to change the application logic.
+   * Modify the `.js` files to change the application logic.
 
-   * Modify the .html file to change the appearance of the application page.
+   * Modify the `.html` file to change the appearance of the application page.
 
    * Use the Watson Assistant tool to train the service for new intents, or to modify the dialog flow. For more information, see the [Watson Assistant service documentation](https://www.ibm.com/watson/services/conversation/).
 
@@ -292,26 +197,16 @@ In the conversation template, alternative bot responses were encoded based on th
 ![Alt text](readme_images/rule.png?raw=true)
 
 
+## License
 
+This sample code is licensed under Apache 2.0.  
+Full license text is available in [LICENSE](LICENSE).
 
-# Troubleshooting
+## Contributing
 
-If you encounter a problem, you can check the logs for more information. To see the logs, run the `cf logs` command:
-
-   ```bash
-   cf logs <application-name> --recent
-   ```
-
-# License
-
-  This sample code is licensed under Apache 2.0.
-  Full license text is available in [LICENSE](LICENSE).
-
-# Contributing
-
-  See [CONTRIBUTING](CONTRIBUTING.md).
+See [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Open Source @ IBM
 
-  Find more open source projects on the
-  [IBM Github Page](http://ibm.github.io/).
+Find more open source projects on the
+[IBM Github Page](http://ibm.github.io/).
