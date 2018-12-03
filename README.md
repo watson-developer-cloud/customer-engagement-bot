@@ -31,65 +31,57 @@ If you want to experiment with the application or use it as a basis for building
     - Log in to your IBM Cloud account.
     - Click **Create**.
     - Click **Show** to view the service credentials.
-    - Copy the `apikey` value, or copy the `username` and `password` values if your service instance doesn't provide an `apikey`.
+    - Copy the `apikey` value
     - Copy the `url` value.
 1. Create an instance of the Tone Analyzer service and get your credentials:
     - Go to the [Tone Analyzer](https://console.bluemix.net/catalog/services/tone-analyzer) page in the IBM Cloud Catalog.
     - Log in to your IBM Cloud account.
     - Click **Create**.
     - Click **Show** to view the service credentials.
-    - Copy the `apikey` value, or copy the `username` and `password` values if your service instance doesn't provide an `apikey`.
+    - Copy the `apikey` value
     - Copy the `url` value.
 
 ## Configuring the application
 
 1. In your IBM Cloud console, open the Watson Assistant service instance
 
-2. Click the **Import workspace** icon in the Watson Assistant service tool. Specify the location of the workspace JSON file in your local copy of the app project:
+1.  Click on the  **Launch tool** button to launch into the Watson Assistant tooling.  
 
-    `<project_root>/customer-engagement-bot/training/ce-workspace.json`
+    ![Watson Assistant Launch Tool](readme_images/WA_LaunchTool.png)
 
-3. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The car dashboard workspace is created.
 
-4. Click the menu icon in the upper-right corner of the workspace tile, and then select **View details**.
+1.  This is the Watson Assistant tooling where you can create assistants, skills and and setup different chatbots applications. We'll be importing a pre-built skill. **Click on 'Skills'** on the top left, and then on the **Create new** button. 
 
-5. Click the ![Copy](readme_images/copy.png) icon to copy the workspace ID to the clipboard.
+    ![Watson Assistant New Skill](readme_images/WA_CreateNewSkill.png)
 
-    ![Steps to get credentials](https://github.com/watson-developer-cloud/assistant-simple/raw/master/readme_images/assistant-simple.gif)
+1.  **Click on 'Import Skill'** and then on the **Choose JSON File** button. 
 
-6. In the application folder, copy the *.env.example* file and create a file called *.env*
+    ![Watson Assistant Import Skill](readme_images/WA_ImportSkill.png)
+
+1.  Find the workspace JSON file `training/ce-workspace.json` from this repository on your local machine and **Click the 'Import'** button (make sure the **Everything** radio button is selected to import intents, entities and dialog).  
+
+    ![Watson Assistant Import Skill Complete](readme_images/WA_ImportSkillFinish.png)
+
+1.  You will be redirected into a page with four tabs, Intents, Entities, Dialog, and Content Catalog. For the purposes of this lab, the skill is fairly complete.
+
+
+1.  To interact with the correct skill, you will  need the unique identifier for your skill.  You can find the workspace ID from the Watson Assistant tooling. From the main Skills page, **Click on the three stacked dots** on the top right of the skill you created/imported. Then **click on the 'View API Details'** option in the menu.
+
+    ![Workspace ID](readme_images/WA_WorkspaceID.png)  
+
+    Copy the **Workspace ID** value from this page.
+
+1. In the application folder, copy the *.env.example* file and create a file called *.env*
 
     ```
     cp .env.example .env
     ```
 
-7. Open the *.env* file and add the service credentials that you obtained in the previous step.
+1. Open the *.env* file and add the service credentials that you obtained for both Watson Assistant and Tone Analyzer in the previous step.
 
-    Example *.env* file that configures the `apikey` and `url` for a Watson Assistant service instance hosted in the US East region:
+1. Add the `WORKSPACE_ID` to the previous properties
 
-    ```
-    ASSISTANT_IAM_APIKEY=X4rbi8vwZmKpXfowaS3GAsA7vdy17Qh7km5D6EzKLHL2
-    ASSISTANT_URL=https://gateway-wdc.watsonplatform.net/assistant/api
-    ```
-
-    If your service instance uses `username` and `password` credentials, add the `ASSISTANT_USERNAME` and `ASSISTANT_PASSWORD` variables to the *.env* file.
-
-    Example *.env* file that configures the `username`, `password`, and `url` for a Watson Assistant service instance hosted in the US South region:
-
-    ```
-    ASSISTANT_USERNAME=522be-7b41-ab44-dec3-g1eab2ha73c6
-    ASSISTANT_PASSWORD=A4Z5BdGENrwu8
-    ASSISTANT_URL=https://gateway.watsonplatform.net/assistant/api
-    ```
-
-8. Add the `WORKSPACE_ID` to the previous properties
-
-    ```
-    WORKSPACE_ID=522be-7b41-ab44-dec3-g1eab2ha73c6
-    ```
-
-
-9. Your `.env` file  should looks like:
+1. Your `.env` file  should looks like:
 
     ```
     # Environment variables
