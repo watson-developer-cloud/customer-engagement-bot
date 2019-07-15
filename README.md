@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none;">🚀 Customer Engagement Bot</h1>
-<h3 align="center">This application demonstrates how the Watson Assistant service (formerly Conversation) can be adapted to use Tone Analyzer's Customer Engagement feature along with intents and entities in a simple chat interface.</h3>
+<h3 align="center">DEPRECATED: this repo is no longer actively maintained. It can still be used as reference, but may contain outdated or unpatched code.</h3>
 <p align="center">
   <a href="http://travis-ci.org/watson-developer-cloud/customer-engagement-bot">
     <img alt="Travis" src="https://travis-ci.org/watson-developer-cloud/customer-engagement-bot.svg?branch=master">
@@ -12,8 +12,6 @@
 
 
 ![Demo GIF](readme_images/ce-demo.gif?raw=true)
-
-Demo: http://customer-engagement-bot.mybluemix.net/
 
 For more information on the Watson Assistant (Conversation) service, see the [detailed documentation](https://console.bluemix.net/docs/services/conversation/index.html#about).
 For more information on the Tone Analyzer Service, see the [detailed documentation](https://console.bluemix.net/docs/services/tone-analyzer/index.html#about).
